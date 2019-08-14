@@ -77,10 +77,11 @@ class StarterBot():
                          
         # default move
         for ant_loc in ants.my_ants():
-            directions = ('n','e','s','w')
-            direction = randrange(0,4)
-            while not self.Movement.do_move_direction(ant_loc, directions[direction], ants):
-                direction = randrange(0,4)
+            directions = ['n','e','s','w']
+            random.shuffle(directions)
+            for direction in directions:
+                if self.Movement.do_move_direction(ant_loc, direction, ants):
+                    break
 
 if __name__ == '__main__':
     try:
